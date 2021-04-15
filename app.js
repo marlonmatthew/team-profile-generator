@@ -29,21 +29,6 @@ const createAdditional = [
   },
 ];
 
-function init() {
-  inquirer.prompt(employeeSelection).then((answers) => {
-    switch (answers.type) {
-      case `Manager`:
-        createManager();
-        break;
-      case `Engineer`:
-        createEngineer();
-        break;
-      default:
-        createIntern();
-    }
-  });
-}
-
 function createManager() {
   inquirer
     .prompt([
@@ -75,7 +60,10 @@ function createManager() {
         answers.email,
         answers.officeNumber
       );
+
       employees.push(manager);
+
+      createExtraProfile();
     });
 }
 
@@ -110,7 +98,10 @@ function createEngineer() {
         answers.email,
         answers.github
       );
+
       employees.push(engineer);
+
+      createExtraProfile();
     });
 }
 
@@ -145,11 +136,39 @@ function createIntern() {
         answers.email,
         answers.school
       );
+
       employees.push(intern);
+
+      createExtraProfile();
     });
 }
 
 init();
+
+function init() {
+  inquirer.prompt(employeeSelection).then((answers) => {
+    switch (answers.type) {
+      case "Manager":
+        createManager();
+        break;
+      case "Engineer":
+        createEngineer();
+        break;
+      case "Intern":
+        createIntern();
+    }
+  });
+}
+
+function createExtraProfile() {
+  inquirer.prompt(createAdditional).then((answers) => {
+    if (answers.createAdditionalProfile) {
+      init();
+    } else {
+      fs.writeFileSync(outputPath, render(employees));
+    }
+  });
+}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
