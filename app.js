@@ -11,8 +11,10 @@ const render = require("./lib/htmlRenderer");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+//array containing employee info
 const employees = [];
 
+//prompt for selecting the employee profile type to create
 const employeeSelection = [
   {
     message: "What kind of employee profile would you like to create?",
@@ -22,6 +24,7 @@ const employeeSelection = [
   },
 ];
 
+//prompt for creating another profile
 const createAdditional = [
   {
     message: "Create an additional employee profile?",
@@ -30,6 +33,7 @@ const createAdditional = [
   },
 ];
 
+//function for creating a manager profile
 function createManager() {
   inquirer
     .prompt([
@@ -68,6 +72,7 @@ function createManager() {
     });
 }
 
+//function for creating an engineer profile
 function createEngineer() {
   inquirer
     .prompt([
@@ -106,6 +111,7 @@ function createEngineer() {
     });
 }
 
+//function for creating an intern profile
 function createIntern() {
   inquirer
     .prompt([
@@ -144,6 +150,7 @@ function createIntern() {
     });
 }
 
+//initialization function which starts the app
 init();
 
 function init() {
@@ -161,6 +168,7 @@ function init() {
   });
 }
 
+//if user wants to create another profile, run init again, otherwise render the html and write the file to output folder
 function createExtraProfile() {
   inquirer.prompt(createAdditional).then((answers) => {
     if (answers.createAdditionalProfile) {

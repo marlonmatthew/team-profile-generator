@@ -1,8 +1,8 @@
-Title: team-profile-generator
+## team-profile-generator
 
 ![Capture](https://user-images.githubusercontent.com/73320305/114822371-cc0c6c00-9d76-11eb-8c49-045c7eb9f2c1.PNG)
 
-License: None
+---
 
 ## Table of Contents
 
