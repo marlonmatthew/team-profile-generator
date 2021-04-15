@@ -114,6 +114,41 @@ function createEngineer() {
     });
 }
 
+function createIntern() {
+  inquirer
+    .prompt([
+      {
+        message: "Enter first name: ",
+        type: "input",
+        name: "name",
+      },
+      {
+        message: "Enter ID number: ",
+        type: "input",
+        name: "id",
+      },
+      {
+        message: "Enter email address: ",
+        type: "input",
+        name: "email",
+      },
+      {
+        message: "Enter school name: ",
+        type: "input",
+        name: "school",
+      },
+    ])
+    .then((answers) => {
+      const intern = new Intern(
+        answers.name,
+        answers.id,
+        answers.email,
+        answers.school
+      );
+      employees.push(intern);
+    });
+}
+
 init();
 
 // After the user has input all employees desired, call the `render` function (required
