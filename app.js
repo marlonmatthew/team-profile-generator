@@ -12,9 +12,6 @@ const render = require("./lib/htmlRenderer");
 
 const employees = [];
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
 const employeeSelection = [
   {
     message: "What kind of employee profile would you like to create?",
@@ -51,22 +48,22 @@ function createManager() {
   inquirer
     .prompt([
       {
-        message: "Enter first name:",
+        message: "Enter first name: ",
         type: "input",
         name: "name",
       },
       {
-        message: "Enter ID number:",
+        message: "Enter ID number: ",
         type: "input",
         name: "id",
       },
       {
-        message: "Enter email address:",
+        message: "Enter email address: ",
         type: "input",
         name: "email",
       },
       {
-        message: "Enter office number:",
+        message: "Enter office number: ",
         type: "input",
         name: "officeNumber",
       },
@@ -79,6 +76,41 @@ function createManager() {
         answers.officeNumber
       );
       employees.push(manager);
+    });
+}
+
+function createEngineer() {
+  inquirer
+    .prompt([
+      {
+        message: "Enter first name: ",
+        type: "input",
+        name: "name",
+      },
+      {
+        message: "Enter ID number: ",
+        type: "input",
+        name: "id",
+      },
+      {
+        message: "Enter email address: ",
+        type: "input",
+        name: "email",
+      },
+      {
+        message: "Enter GitHub username: ",
+        type: "input",
+        name: "githubUsername",
+      },
+    ])
+    .then((answers) => {
+      const engineer = new Engineer(
+        answers.name,
+        answers.id,
+        answers.email,
+        answers.giithubUsername
+      );
+      employees.push(engineer);
     });
 }
 
