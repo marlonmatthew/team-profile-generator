@@ -100,7 +100,7 @@ function createEngineer() {
       {
         message: "Enter GitHub username: ",
         type: "input",
-        name: "githubUsername",
+        name: "github",
       },
     ])
     .then((answers) => {
@@ -108,7 +108,7 @@ function createEngineer() {
         answers.name,
         answers.id,
         answers.email,
-        answers.giithubUsername
+        answers.github
       );
       employees.push(engineer);
     });
